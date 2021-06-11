@@ -1,0 +1,29 @@
+stages:
+  create_data:
+    cmd: python3 src/create_dataset.py
+    deps:
+    - src/create_dataset.py
+    outs:
+    - assets/data
+  create_features:
+    cmd: python3 src/create_features.py
+    deps:
+    - src/create_features.py
+    outs:
+    - assets/features
+  train:
+    cmd: python3 src/train.py
+    deps:
+    - assets/features
+    - src/train.py
+    outs:
+    - assets/models
+  evaluate:
+    cmd: python3 src/evaluate.py
+    deps:
+    - assets/features
+    - assets/models
+    - src/evaluate.py
+    metrics:
+    - assets/metrics.json:
+        cache: false
