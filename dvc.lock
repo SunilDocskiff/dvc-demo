@@ -30,12 +30,12 @@ stages:
       size: 76739992
       nfiles: 4
     - path: src/train.py
-      md5: 8e6ffc953bf3ef91566f6bcc6946b593
-      size: 652
+      md5: 5771c91b209f16a70b9961fabedae5e7
+      size: 654
     outs:
     - path: assets/models
-      md5: 19c5c37e3f3f66cd79d736da3a81e7be.dir
-      size: 67375
+      md5: e0bd747e3c0d1a6963201172e50ad222.dir
+      size: 67478
       nfiles: 1
   evaluate:
     cmd: python3 src/evaluate.py
@@ -45,13 +45,13 @@ stages:
       size: 76739992
       nfiles: 4
     - path: assets/models
-      md5: 19c5c37e3f3f66cd79d736da3a81e7be.dir
-      size: 67375
+      md5: e0bd747e3c0d1a6963201172e50ad222.dir
+      size: 67478
       nfiles: 1
     - path: src/evaluate.py
       md5: db3fd094d85bf5f51808ac7def50dc58
       size: 637
     outs:
     - path: assets/metrics.json
-      md5: 49e47611f438448d5a526b203352f366
-      size: 57
+      md5: 738414006fd7dc7e1d8efef624ae0a18
+      size: 58

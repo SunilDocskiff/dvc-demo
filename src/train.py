@@ -13,7 +13,7 @@ X_train = pd.read_csv(str(Config.FEATURES_PATH / "train_features.csv"))
 y_train = pd.read_csv(str(Config.FEATURES_PATH / "train_labels.csv"))
 
 #model = OneVsRestClassifier(LinearSVC(random_state=42))
-model = OneVsRestClassifier(SGDClassifier(loss="log",random_state=42))
+model = OneVsRestClassifier(SGDClassifier(loss="hinge",random_state=42))
 model = model.fit(X_train, y_train.to_numpy().ravel())
 
 
