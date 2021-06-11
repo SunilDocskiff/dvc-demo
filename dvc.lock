@@ -4,11 +4,11 @@ stages:
     cmd: python3 src/create_dataset.py
     deps:
     - path: src/create_dataset.py
-      md5: 51bc85cc1b3d6968d755d39b58c5ed12
-      size: 724
+      md5: 7dc31cb76dc96705e6fa38cbb17579a7
+      size: 802
     outs:
     - path: assets/data
-      md5: 70823c34cea1000d50ad199a8e669654.dir
+      md5: 3f0fa09a31c84616c378edf2fdbd1c44.dir
       size: 76739992
       nfiles: 2
   create_features:
@@ -30,12 +30,12 @@ stages:
       size: 76739992
       nfiles: 4
     - path: src/train.py
-      md5: 5771c91b209f16a70b9961fabedae5e7
-      size: 654
+      md5: 5ef4be483d04862b2e6013a90e9c6d3b
+      size: 992
     outs:
     - path: assets/models
-      md5: e0bd747e3c0d1a6963201172e50ad222.dir
-      size: 67478
+      md5: f5bd32bad271eda7df7544df4139d601.dir
+      size: 6427543
       nfiles: 1
   evaluate:
     cmd: python3 src/evaluate.py
@@ -45,13 +45,13 @@ stages:
       size: 76739992
       nfiles: 4
     - path: assets/models
-      md5: e0bd747e3c0d1a6963201172e50ad222.dir
-      size: 67478
+      md5: f5bd32bad271eda7df7544df4139d601.dir
+      size: 6427543
       nfiles: 1
     - path: src/evaluate.py
-      md5: db3fd094d85bf5f51808ac7def50dc58
-      size: 637
+      md5: e672ed6c6f8dae5cfd521a745855a9e0
+      size: 865
     outs:
     - path: assets/metrics.json
-      md5: 738414006fd7dc7e1d8efef624ae0a18
-      size: 58
+      md5: 82acd2b108f11e2a0790b318c9652576
+      size: 113
