@@ -16,4 +16,4 @@ y_pred = model.predict(X_test)
 f1_score = f1_score(y_test, y_pred, average='macro')
 #print(model.estimator.__class__.__name__)
 with open(str(Config.METRICS_FILE_PATH), "w") as outfile:
-    json.dump(dict(model=model.estimator.__class__.__name__ , f1_score=f1_score), outfile)
+    json.dump(dict(model="SVM", f1_score=f1_score), outfile)

@@ -1,0 +1,14 @@
+dvc init
+---
+dvc run -n <stagename> -d <dependencies> -o <outputpath> <command to run>
+
+--
+dvc repro dvc.yaml
+
+--
+dvc metrics show -T
+
+dvc.yaml : all stages are stored
+.dvc : reproducable files
+
+dvc dag
