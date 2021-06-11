@@ -3,7 +3,8 @@ import pickle
 
 import pandas as pd
 from sklearn.multiclass import OneVsRestClassifier
-from sklearn.svm import LinearSVC
+#from sklearn.svm import LinearSVC
+from sklearn.linear_model import SGDClassifier
 from config import Config
 
 Config.MODELS_PATH.mkdir(parents=True, exist_ok=True)
@@ -11,7 +12,8 @@ Config.MODELS_PATH.mkdir(parents=True, exist_ok=True)
 X_train = pd.read_csv(str(Config.FEATURES_PATH / "train_features.csv"))
 y_train = pd.read_csv(str(Config.FEATURES_PATH / "train_labels.csv"))
 
-model = OneVsRestClassifier(LinearSVC(random_state=42))
+#model = OneVsRestClassifier(LinearSVC(random_state=42))
+model = OneVsRestClassifier(SGDClassifier(loss="log",random_state=42))
 model = model.fit(X_train, y_train.to_numpy().ravel())
 
 
