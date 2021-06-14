@@ -4,6 +4,6 @@ prepare:
 
 train:
   seed: 10
-  n_est: 150
-  min_split: 64
-  max_depth: 5
+  n_est: 200
+  min_split: 8
+  max_depth: 6

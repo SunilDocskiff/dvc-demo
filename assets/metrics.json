@@ -1,1 +1,1 @@
-{"model": "RF", "f1_score": 0.8937956394604104, "seed": 10, "n_estimators": 150, "min_split": 64, "max_depth": 5}
+{"model": "RF", "f1_score": 0.9150516517114553, "seed": 10, "n_estimators": 200, "min_split": 8, "max_depth": 6}

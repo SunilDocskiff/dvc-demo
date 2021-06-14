@@ -1,13 +1,17 @@
 stages:
-  create_data:
+  create_dataset:
     cmd: python3 src/create_dataset.py
     deps:
     - src/create_dataset.py
     outs:
     - assets/data
+    params:
+    - prepare.seed
+    - prepare.split
   create_features:
     cmd: python3 src/create_features.py
     deps:
+    - assets/data
     - src/create_features.py
     outs:
     - assets/features
@@ -18,10 +22,14 @@ stages:
     - src/train.py
     outs:
     - assets/models
+    params:
+    - train.max_depth
+    - train.min_split
+    - train.n_est
+    - train.seed
   evaluate:
     cmd: python3 src/evaluate.py
     deps:
-    - assets/features
     - assets/models
     - src/evaluate.py
     metrics:

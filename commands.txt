@@ -12,3 +12,15 @@ dvc.yaml : all stages are stored
 .dvc : reproducable files
 
 dvc dag
+---
+
+Stages :
+
+dvc run  -f -n create_dataset -p prepare.seed,prepare.split -d src/create_dataset.py -o assets/data python3 src/create_dataset.py
+
+dvc run  -f -n create_features  -d src/create_features.py -d assets/data -o assets/features python3 src/create_features.py
+
+dvc run -f -n train -p train.seed,train.n_est,train.min_split,train.max_depth -d assets/features -d src/train.py -o assets/models python3 src/train.py
+
+dvc run -f -n evaluate -d assets/models -d src/evaluate.py -M assets/metrics.json python3 src/evaluate.py
+---

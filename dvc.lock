@@ -1,57 +1,67 @@
 schema: '2.0'
 stages:
-  create_data:
+  create_dataset:
     cmd: python3 src/create_dataset.py
     deps:
     - path: src/create_dataset.py
       md5: 7dc31cb76dc96705e6fa38cbb17579a7
       size: 802
+    params:
+      params.yaml:
+        prepare.seed: 10
+        prepare.split: 0.2
     outs:
     - path: assets/data
-      md5: 3f0fa09a31c84616c378edf2fdbd1c44.dir
+      md5: 3622c02abacb89eaa7943326cc01eda0.dir
       size: 76739992
       nfiles: 2
   create_features:
     cmd: python3 src/create_features.py
     deps:
+    - path: assets/data
+      md5: 3622c02abacb89eaa7943326cc01eda0.dir
+      size: 76739992
+      nfiles: 2
     - path: src/create_features.py
       md5: 04f79ad10fa49dbac86ee15ecd730040
       size: 633
     outs:
     - path: assets/features
-      md5: 68bdd992a34203298b4c438c8bc6fc2b.dir
+      md5: 3d0744881404920f0b6e78ece8995bf1.dir
       size: 76739992
       nfiles: 4
   train:
     cmd: python3 src/train.py
     deps:
     - path: assets/features
-      md5: 68bdd992a34203298b4c438c8bc6fc2b.dir
+      md5: 3d0744881404920f0b6e78ece8995bf1.dir
       size: 76739992
       nfiles: 4
     - path: src/train.py
       md5: 5ef4be483d04862b2e6013a90e9c6d3b
       size: 992
+    params:
+      params.yaml:
+        train.max_depth: 6
+        train.min_split: 8
+        train.n_est: 200
+        train.seed: 10
     outs:
     - path: assets/models
-      md5: f5bd32bad271eda7df7544df4139d601.dir
-      size: 6427543
+      md5: 3997593b6aa440a6343843a66d1c57c2.dir
+      size: 16180203
       nfiles: 1
   evaluate:
     cmd: python3 src/evaluate.py
     deps:
-    - path: assets/features
-      md5: 68bdd992a34203298b4c438c8bc6fc2b.dir
-      size: 76739992
-      nfiles: 4
     - path: assets/models
-      md5: f5bd32bad271eda7df7544df4139d601.dir
-      size: 6427543
+      md5: 3997593b6aa440a6343843a66d1c57c2.dir
+      size: 16180203
       nfiles: 1
     - path: src/evaluate.py
       md5: e672ed6c6f8dae5cfd521a745855a9e0
       size: 865
     outs:
     - path: assets/metrics.json
-      md5: 82acd2b108f11e2a0790b318c9652576
-      size: 113
+      md5: c8066a6f0b8d8fddb34848a9c6f8c679
+      size: 112
